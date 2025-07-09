@@ -5,14 +5,26 @@ int main() {
 	int n;
 	cin >> n;
 	vector<int> a;
+	int cnt=0;
 	for (int i=0; i<n; i++) {
 		int ai;
 		cin >> ai;
-		if (ai == 0) a.push_back(1);
-		else a.push_back(-1);
+		if (ai == 1) {
+			cnt++;
+			a.push_back(-1);
+		}
+		else {
+			a.push_back(1);
+		}
 	}
-	vector<int> prefix;
-	prefix.push_back(a[0]);
-	for (int i=1; i<n; i++) prefix.push_back(a[i] + prefix[i-1]);
-	for (int i=0; i<n; i++) cout << prefix[i];
+	int sum = 0;
+	int maxi = INT_MIN;
+	for (int i=0; i<n; i++) {
+		sum += a[i];
+		maxi = max(sum, maxi);
+		if (sum < 0) {
+			sum = 0;
+		}
+	}
+	cout << cnt + maxi;
 }
