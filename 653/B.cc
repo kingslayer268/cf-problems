@@ -2,7 +2,7 @@
 using namespace std;
 
 int calc(long long n) {
-	int cnt_2, cnt_3;
+	int cnt_2=0, cnt_3=0;
 	while (n%2 == 0) {
 		n = n/2;
 		cnt_2++;
